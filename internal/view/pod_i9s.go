@@ -136,7 +136,7 @@ func (p *Pod) i9sExtension(evt *tcell.EventKey) *tcell.EventKey {
 	env := p.GetTable().envFn()
 	log.Debug().Msgf("get env in pod_i9s %+v", env)
 
-	iview := NewI9sExtensionView(client.NewGVR("i9sExtension"))
+	iview := NewI9sExtensionView(client.NewGVR("i9sExtension"), sel)
 	iview.SetContextFn(p.coContext)
 	if err := p.App().inject(iview); err != nil {
 		p.App().Flash().Err(err)

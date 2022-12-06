@@ -16,6 +16,8 @@ func loadCustomViewers() MetaViewers {
 	batchViewers(m)
 	extViewers(m)
 	helmViewers(m)
+	//
+	//i9sExtensionViewers(m)
 
 	return m
 }
@@ -179,3 +181,16 @@ func showCRD(app *App, _ ui.Tabular, _, path string) {
 	tokens := strings.Split(crdGVR, ".")
 	app.gotoResource(tokens[0], "", false)
 }
+
+//func i9sExtensionViewers(vv MetaViewers) {
+//	vv[client.NewGVR("i9sExtension")] = MetaViewer{
+//		bindFn: func(*tcell.EventKey) *tcell.EventKey {
+//			iview := NewI9sExtensionView(client.NewGVR("i9sExtension"))
+//			if err := vv.App().inject(iview); err != nil {
+//				i.App().Flash().Err(err)
+//				return evt
+//			}
+//			return nil
+//		},
+//	}
+//}

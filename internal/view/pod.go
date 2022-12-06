@@ -76,7 +76,7 @@ func (p *Pod) bindKeys(aa ui.KeyActions) {
 		ui.KeyM: ui.NewKeyAction("Envoy-Debug-View", p.showProxyConfig, true),
 		ui.KeyN: ui.NewKeyAction("Istioctl-View", p.showProxyInfo, true),
 		ui.KeyB: ui.NewKeyAction("ProxyEx-View", p.showProxyInfoEx, true),
-		ui.KeyV: ui.NewKeyAction("I9s-Extension", p.i9sExtension, true),
+		//ui.KeyV: ui.NewKeyAction("I9s-Extension", p.i9sExtension, true),
 	})
 	aa.Add(ui.KeyActions{
 		ui.KeyF:      ui.NewKeyAction("Show PortForward", p.showPFCmd, true),

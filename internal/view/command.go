@@ -3,6 +3,7 @@ package view
 import (
 	"errors"
 	"fmt"
+	"github.com/derailed/k9s/internal/ui"
 	"regexp"
 	"strings"
 	"sync"
@@ -234,8 +235,15 @@ func (c *Command) componentFor(gvr, path string, v *MetaViewer) ResourceViewer {
 	view.SetInstance(path)
 	if v.enterFn != nil {
 		view.GetTable().SetEnterFn(v.enterFn)
-	}
 
+	}
+	if v.bindFn != nil {
+		view.GetTable().AddBindKeysFn(func(aa ui.KeyActions) {
+			aa.Add(ui.KeyActions{
+				ui.KeyV: ui.NewKeyAction("I9s-Extension", v.bindFn, true),
+			})
+		})
+	}
 	return view
 }
 

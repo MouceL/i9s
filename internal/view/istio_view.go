@@ -38,7 +38,7 @@ func (i *IstioView) bindKeys(aa ui.KeyActions) {
 	aa.Add(ui.KeyActions{
 		ui.KeyM: ui.NewKeyAction("Istio-Debug-View", i.istioDebugApi, true),
 		ui.KeyN: ui.NewKeyAction("Istioctl-View", i.istioctlView, true),
-		ui.KeyV: ui.NewKeyAction("I9s-Extension", i.i9sExtension, true),
+		//ui.KeyV: ui.NewKeyAction("I9s-Extension", i.i9sExtension, true),
 	})
 }
 
@@ -92,7 +92,7 @@ func (i *IstioView) i9sExtension(evt *tcell.EventKey) *tcell.EventKey {
 	env := i.GetTable().envFn()
 	log.Debug().Msgf("get env in isitoview %+v", env)
 
-	iview := NewI9sExtensionView(client.NewGVR("i9sExtension"))
+	iview := NewI9sExtensionView(client.NewGVR("i9sExtension"), sel)
 	iview.SetContextFn(i.chartContext)
 	if err := i.App().inject(iview); err != nil {
 		i.App().Flash().Err(err)

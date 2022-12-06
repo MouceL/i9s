@@ -2,6 +2,7 @@ package view
 
 import (
 	"context"
+	"github.com/gdamore/tcell/v2"
 
 	"github.com/derailed/k9s/internal/client"
 	"github.com/derailed/k9s/internal/dao"
@@ -126,6 +127,7 @@ type ViewerFunc func(client.GVR) ResourceViewer
 type MetaViewer struct {
 	viewerFn ViewerFunc
 	enterFn  EnterFunc
+	bindFn   func(*tcell.EventKey) *tcell.EventKey
 }
 
 // MetaViewers represents a collection of meta viewers.
